@@ -34,7 +34,7 @@ const About = () => {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white py-12 px-4 sm:px-6 lg:px-12 flex items-center justify-center">
+    <section className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white py-12 px-2 sm:px-6 lg:px-6 flex items-center justify-center">
       <motion.div 
         className="max-w-7xl mx-auto"
         variants={containerVariants}
@@ -46,7 +46,7 @@ const About = () => {
           variants={itemVariants}
         >
           <h1 className="text-4xl font-bold mb-6 text-center text-purple-300">
-            Imtiaz
+            Sayem Hossen
           </h1>
           <p className="text-gray-300 mb-8 text-lg leading-relaxed">
             As a Full Stack Developer turned Product Manager, I bring a unique blend of technical expertise and strategic vision to the tech industry. My journey in software development, coupled with my current role in product management, allows me to bridge the gap between innovative ideas and their practical implementation.
@@ -78,19 +78,15 @@ const About = () => {
               title="Leadership & Communication"
               description="Strong leadership skills with the ability to communicate complex technical concepts to diverse stakeholders."
             />
-            <InfoItem 
-              icon={FaGraduationCap}
-              title="Education"
-              description="Pursuing a Bachelor's in Computer Science and Engineering at Mawlana Bhasani Science and Technology University (2021 - Present)."
-            />
+            
           </motion.div>
 
           <motion.div 
-            className="flex justify-center space-x-6 mt-8"
+            className="flex flex-col items-center space-y-4 mt-8 sm:flex-row sm:space-y-0 sm:space-x-6"
             variants={itemVariants}
           >
             <motion.a
-              href="https://github.com/rahatutzaman-rizon"
+              href="https://github.com/sayem-hossen"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
@@ -99,7 +95,7 @@ const About = () => {
               <FaGithub size={24} />
             </motion.a>
             <motion.a
-              href="https://www.linkedin.com/in/rahatutzaman-rizon-373529172/"
+              href="https://www.linkedin.com/in/sayem-hossen/"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
@@ -108,11 +104,18 @@ const About = () => {
               <FaLinkedinIn size={24} />
             </motion.a>
             <motion.a
-              href="mailto:rizonrahat199@gmail.com"
+              href="mailto:sayemhossen874@gmail.com"
               whileHover={{ scale: 1.1 }}
               className="text-purple-300 hover:text-purple-400"
             >
               <FaEnvelope size={24} />
+            </motion.a>
+            <motion.a
+              href="tel:+8801886441152"
+              whileHover={{ scale: 1.1 }}
+              className="text-purple-300 hover:text-purple-400"
+            >
+              <FaMobileAlt size={24} />
             </motion.a>
           </motion.div>
         </motion.div>

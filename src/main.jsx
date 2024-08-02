@@ -14,6 +14,8 @@ import BlogCard from './Page/Blog/BlogCard';
 import ContactForm from './component/ContactForm';
 import Portfolio from './component/Project';
 import About from './component/About';
+import Projects from './component/Projects';
+import SingleProject from './component/ProjectDetails';
 
 
 const router = createBrowserRouter([
@@ -47,14 +49,14 @@ const router = createBrowserRouter([
     path:"/achivement",
     element:<Portfolio></Portfolio>
   },
-  // {
-  //   path: "/project",
-  //   element:<AllProjects></AllProjects>,
-  // },
-  // {
-  //   path: "/project/:id",
-  //   element:<SingleProject></SingleProject>,
-  // },
+  {
+    path: "/project",
+    element:<Projects></Projects>
+  },
+  {
+    path: "/project/:id",
+    element:<SingleProject></SingleProject>
+  },
 
   {
     path: "/about",

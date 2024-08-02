@@ -1,4 +1,4 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, useAnimation, useScroll } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
 import { FaGithub, FaLinkedin, FaArrowDown, FaFileDownload } from 'react-icons/fa';
@@ -68,7 +68,7 @@ const Banner = () => {
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 5, repeat: Infinity }}
           >
-            Imtiaz
+            Sayem Hossen
           </motion.h1>
           <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-gray-300">
             <TypeAnimation
@@ -77,7 +77,6 @@ const Banner = () => {
                 2000,
                 'Apps Developer',
                 2000,
-                
                 'Tech Enthusiast',
                 2000,
                 'Product Manager',
@@ -88,7 +87,7 @@ const Banner = () => {
             />
           </h2>
           <p className="text-xl mb-12 text-gray-400 max-w-2xl mx-auto">
-            Passionate about creating innovative digital solutions that combine cutting-edge technology with intuitive design. Lets bring your ideas to life.
+            Passionate about creating innovative digital solutions that combine cutting-edge technology with intuitive design. Let's bring your ideas to life.
           </p>
 
           <div className="flex flex-wrap justify-center gap-6 mb-12">
@@ -108,7 +107,7 @@ const Banner = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Link to="contact" smooth={true} duration={500}>
-                Lets Connect
+                Let's Connect
               </Link>
             </motion.button>
           </div>

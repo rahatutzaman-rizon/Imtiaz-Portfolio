@@ -74,11 +74,11 @@ const ContactForm = () => {
             >
               <div className="flex items-center text-gray-200">
                 <FaUser className="mr-3" />
-                <span>Rahatutzaman Rizon</span>
+                <span>Sayem Hossen</span>
               </div>
               <div className="flex items-center text-gray-200">
                 <FaEnvelope className="mr-3" />
-                <span>rizonrahat199@gmail.com</span>
+                <span>sayemhossen874@gmail.com</span>
               </div>
             </motion.div>
           </div>
