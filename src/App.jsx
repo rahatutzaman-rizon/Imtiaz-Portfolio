@@ -2,8 +2,8 @@ import About from "./component/About";
 import Banner from "./component/Banner";
 import Contact from "./component/Contact";
 import ContactForm from "./component/ContactForm";
+import Count from "./component/Count";
 import ProfilePage from "./component/ProfilePage";
-import Portfolio from "./component/Project";
 
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
       <Banner></Banner>
       <About></About>
       <ProfilePage></ProfilePage>
-      <Portfolio></Portfolio>
+       <Count></Count>
       <Contact></Contact>
       <ContactForm></ContactForm>
     </div>

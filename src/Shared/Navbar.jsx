@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { FaHome, FaBlog, FaUser, FaEnvelope, FaBars, FaTimes, FaArchive, FaMedal } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { FaHome, FaBlog, FaUser, FaEnvelope, FaBars, FaTimes, } from 'react-icons/fa';
 import { FaDiagramProject } from 'react-icons/fa6';
+import { Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
   { name: 'Home', path: '/', icon: <FaHome /> },
-  { name: 'Achivement', path: '/achivement', icon: <FaMedal/> },
-  { name: 'Project', path: '/project', icon: <FaDiagramProject /> },
+  
+  { name: 'Projects', path: '/project', icon: <FaDiagramProject /> },
   { name: 'Blog', path: '/blog', icon: <FaBlog /> },
   { name: 'About', path: '/about', icon: <FaUser /> },
   { name: 'Contact', path: '/contact', icon: <FaEnvelope /> },
@@ -15,6 +15,17 @@ const navItems = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -27,25 +38,34 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gradient-to-r from-blue-800 to-purple-600 p-4 shadow-lg">
-      <div className="container mx-auto flex items-center justify-between">
-        <div className="text-white text-2xl font-bold">Sayem Hossen</div>
-        <div className="hidden md:flex space-x-6">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              className="text-white flex items-center space-x-2 hover:text-yellow-400 transition duration-300"
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-gray-900 shadow-lg' : 'bg-transparent'}`}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <Link to="/" className="flex items-center">
+            <span className="text-white text-xl font-extrabold tracking-wider">SAYEM HOSSEN</span>
+          </Link>
+          <div className="hidden md:flex space-x-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300 ${location.pathname === item.path ? 'bg-gray-800 text-white' : ''}`}
+              >
+                <div className="flex items-center space-x-2">
+                  {item.icon}
+                  <span>{item.name}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={toggleDropdown}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
             >
-              {item.icon}
-              <span>{item.name}</span>
-            </Link>
-          ))}
-        </div>
-        <div className="md:hidden flex items-center">
-          <button onClick={toggleDropdown} className="text-white focus:outline-none">
-            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-          </button>
+              {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            </button>
+          </div>
         </div>
       </div>
       <AnimatePresence>
@@ -55,21 +75,23 @@ const Navbar = () => {
             animate="visible"
             exit="exit"
             variants={dropdownVariants}
-            className="md:hidden bg-gradient-to-r from-blue-500 to-purple-600 p-4 mt-2 shadow-lg rounded-lg"
+            className="md:hidden bg-gray-900"
           >
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className="block text-white py-2 text-center hover:bg-blue-600 rounded-lg transition duration-300"
-                onClick={toggleDropdown}
-              >
-                <div className="flex items-center justify-center space-x-2">
-                  {item.icon}
-                  <span>{item.name}</span>
-                </div>
-              </Link>
-            ))}
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={`text-gray-300 hover:bg-gray-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition duration-300 ${location.pathname === item.path ? 'bg-gray-800 text-white' : ''}`}
+                  onClick={toggleDropdown}
+                >
+                  <div className="flex items-center space-x-2">
+                    {item.icon}
+                    <span>{item.name}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

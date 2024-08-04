@@ -12,10 +12,11 @@ import App from './App';
 import SingleBlog from './Page/Blog/SingleBlog';
 import BlogCard from './Page/Blog/BlogCard';
 import ContactForm from './component/ContactForm';
-import Portfolio from './component/Project';
+
 import About from './component/About';
 import Projects from './component/Projects';
 import SingleProject from './component/ProjectDetails';
+import Portfolio from './component/Portfolio';
 
 
 const router = createBrowserRouter([
