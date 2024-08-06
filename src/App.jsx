@@ -4,6 +4,7 @@ import Contact from "./component/Contact";
 import ContactForm from "./component/ContactForm";
 import Count from "./component/Count";
 import ProfilePage from "./component/ProfilePage";
+import Projects from "./component/Projects";
 
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
       <Banner></Banner>
       <About></About>
       <ProfilePage></ProfilePage>
+      <Projects></Projects>
        <Count></Count>
       <Contact></Contact>
       <ContactForm></ContactForm>
