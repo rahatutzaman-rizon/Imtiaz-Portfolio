@@ -17,6 +17,7 @@ import About from './component/About';
 import Projects from './component/Projects';
 import SingleProject from './component/ProjectDetails';
 import Portfolio from './component/Portfolio';
+import AwardsAndAchievements from './component/Awards';
 
 
 const router = createBrowserRouter([
@@ -47,8 +48,8 @@ const router = createBrowserRouter([
     element:<ContactForm></ContactForm>
   },
   {
-    path:"/achivement",
-    element:<Portfolio></Portfolio>
+    path:"/achievement",
+    element:<AwardsAndAchievements></AwardsAndAchievements>
   },
   {
     path: "/project",

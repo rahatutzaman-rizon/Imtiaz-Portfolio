@@ -1,8 +1,8 @@
-import React from 'react';
+
 import { motion } from 'framer-motion';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import { FaBriefcase, FaGraduationCap, FaTasks, FaAward } from 'react-icons/fa';
+import { FaBriefcase, FaGraduationCap } from 'react-icons/fa';
 
 const ExperienceEducationPage = () => {
   const experiences = [
@@ -67,7 +67,7 @@ const ExperienceEducationPage = () => {
   const education = [
     {
       degree: "Bachelor in Computer Science and Engineering",
-      institution: "University Name",
+      institution: "Sonargaon University",
       date: "2021 - Present (Expected completion in 4 months)",
       details: [
         "CGPA: 3.72 (for current 145 ECTs)",
@@ -86,7 +86,7 @@ const ExperienceEducationPage = () => {
     },
     {
       degree: "Higher Secondary Certificate (12th Standard)",
-      institution: "Institution Name",
+      institution: "Barahatia Adarsha High School",
       date: "2021",
       details: [
         "GPA: 3.98 out of 5",
@@ -133,7 +133,7 @@ const ExperienceEducationPage = () => {
         </h1>
 
         <section className="mb-20">
-          <h2 className="text-3xl font-bold mb-8 text-center text-purple-300">Work Experience</h2>
+          <h2 className="text-2xl font-bold mb-8 text-center text-purple-300">Work Experience</h2>
           <VerticalTimeline lineColor={'#6B46C1'}>
             {experiences.map((exp, index) => (
               <VerticalTimelineElement
@@ -145,9 +145,9 @@ const ExperienceEducationPage = () => {
                 iconStyle={exp.iconStyle}
                 icon={exp.icon}
               >
-                <h3 className="vertical-timeline-element-title text-xl font-bold text-purple-300">{exp.title}</h3>
-                <h4 className="vertical-timeline-element-subtitle text-md text-purple-200">{exp.company}</h4>
-                <ul className="list-disc list-inside text-gray-300 mt-4 space-y-2">
+                <h3 className="text-lg font-bold text-purple-300">{exp.title}</h3>
+                <h4 className="text-md text-purple-200">{exp.company}</h4>
+                <ul className="text-sm text-gray-300 mt-4 space-y-2">
                   {exp.details.map((detail, i) => (
                     <li key={i}>{detail}</li>
                   ))}
@@ -158,7 +158,7 @@ const ExperienceEducationPage = () => {
         </section>
 
         <section>
-          <h2 className="text-3xl font-bold mb-8 text-center text-pink-300">Education</h2>
+          <h2 className="text-2xl font-bold mb-8 text-center text-pink-300">Education</h2>
           <VerticalTimeline lineColor={'#D53F8C'}>
             {education.map((edu, index) => (
               <VerticalTimelineElement
@@ -170,11 +170,11 @@ const ExperienceEducationPage = () => {
                 iconStyle={edu.iconStyle}
                 icon={edu.icon}
               >
-                <h3 className="vertical-timeline-element-title text-xl font-bold text-pink-300">{edu.degree}</h3>
-                <h4 className="vertical-timeline-element-subtitle text-md text-pink-200">{edu.institution}</h4>
+                <h3 className="text-lg font-bold text-pink-300">{edu.degree}</h3>
+                <h4 className="text-md text-pink-200">{edu.institution}</h4>
                 <div className="mt-4">
                   <h5 className="text-lg font-semibold text-pink-200 mb-2">Details:</h5>
-                  <ul className="list-disc list-inside text-gray-300 space-y-1">
+                  <ul className="text-sm text-gray-300 space-y-1">
                     {edu.details.map((detail, i) => (
                       <li key={i}>{detail}</li>
                     ))}
@@ -182,7 +182,7 @@ const ExperienceEducationPage = () => {
                 </div>
                 <div className="mt-4">
                   <h5 className="text-lg font-semibold text-pink-200 mb-2">Achievements:</h5>
-                  <ul className="list-disc list-inside text-gray-300 space-y-1">
+                  <ul className="text-sm text-gray-300 space-y-1">
                     {edu.achievements.map((achievement, i) => (
                       <li key={i}>{achievement}</li>
                     ))}

@@ -1,7 +1,7 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaCode, FaServer, FaDatabase, FaArrowLeft, FaInfoCircle } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaCode, FaServer, FaDatabase, FaArrowLeft, FaInfoCircle, FaClock, FaUsers, FaLightbulb, FaCogs, FaRocket } from 'react-icons/fa';
 
 const SingleProject = () => {
   const [project, setProject] = useState(null);
@@ -81,7 +81,7 @@ const SingleProject = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Link to="/projects" className="inline-flex items-center text-blue-300 hover:text-blue-100 mb-8 transition duration-300">
+          <Link to="/project" className="inline-flex items-center text-blue-300 hover:text-blue-100 mb-8 transition duration-300">
             <FaArrowLeft className="mr-2" /> Back to Projects
           </Link>
         </motion.div>
@@ -120,7 +120,10 @@ const SingleProject = () => {
               transition={{ delay: 0.5, duration: 0.5 }}
               className="mb-12"
             >
-              <h2 className="text-3xl font-semibold mb-6">Project Overview</h2>
+              <h2 className="text-3xl font-semibold mb-6 flex items-center">
+                <FaRocket className="mr-4 text-blue-400" />
+                Project Overview
+              </h2>
               <p className="text-xl text-gray-300 leading-relaxed">{project.long_description}</p>
             </motion.div>
             
@@ -130,7 +133,10 @@ const SingleProject = () => {
               transition={{ delay: 0.7, duration: 0.5 }}
               className="mb-12"
             >
-              <h2 className="text-3xl font-semibold mb-6">Key Features</h2>
+              <h2 className="text-3xl font-semibold mb-6 flex items-center">
+                <FaLightbulb className="mr-4 text-yellow-400" />
+                Key Features
+              </h2>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {project.features.map((feature, index) => (
                   <motion.li 
@@ -153,7 +159,10 @@ const SingleProject = () => {
               transition={{ delay: 1, duration: 0.5 }}
               className="mb-12"
             >
-              <h2 className="text-3xl font-semibold mb-6">Tech Stack</h2>
+              <h2 className="text-3xl font-semibold mb-6 flex items-center">
+                <FaCogs className="mr-4 text-gray-400" />
+                Tech Stack
+              </h2>
               <div className="flex flex-wrap gap-4">
                 {project.tech_stack.map((tech, i) => (
                   <motion.span 
@@ -202,6 +211,33 @@ const SingleProject = () => {
                 <p className="text-gray-300 text-lg">{project.database_details}</p>
               </motion.div>
             </div>
+            
+         
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.4, duration: 0.5 }}
+              className="mb-12"
+            >
+              <h2 className="text-3xl font-semibold mb-6 flex items-center">
+                <FaClock className="mr-4 text-yellow-400" />
+                Timeline
+              </h2>
+              <div className="space-y-4">
+                <div className="flex items-center">
+                  <div className="w-32 font-semibold">Start Date:</div>
+                  <div>{project.start_date}</div>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-32 font-semibold">End Date:</div>
+                  <div>{project.end_date}</div>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-32 font-semibold">Duration:</div>
+                  <div>{project.duration}</div>
+                </div>
+              </div>
+            </motion.div>
             
             <div className="flex flex-col sm:flex-row justify-between items-center">
               <motion.a 

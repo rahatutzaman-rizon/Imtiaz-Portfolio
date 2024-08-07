@@ -1,4 +1,7 @@
 import About from "./component/About";
+import ExtraActivitiesPage from "./component/Activity";
+import ActivitiesPage from "./component/Activity";
+import AwardsAndAchievements from "./component/Awards";
 import Banner from "./component/Banner";
 import Contact from "./component/Contact";
 import ContactForm from "./component/ContactForm";
@@ -7,6 +10,7 @@ import ExperienceEducationPage from "./component/Experience";
 
 import Projects from "./component/Projects";
 import SkillsPage from "./component/Skill";
+import TestimonialsPage from "./component/Testimonial";
 
 
 const App = () => {
@@ -18,7 +22,9 @@ const App = () => {
       <SkillsPage></SkillsPage>
       <Projects></Projects>
        <Count></Count>
-      <Contact></Contact>
+    <TestimonialsPage></TestimonialsPage>
+      <AwardsAndAchievements></AwardsAndAchievements>
+      <ExtraActivitiesPage></ExtraActivitiesPage>
       <ContactForm></ContactForm>
     </div>
   );

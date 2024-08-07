@@ -1,0 +1,93 @@
+
+import { motion } from 'framer-motion';
+import Lottie from 'react-lottie';
+import { FaLeaf, FaFish, FaPlane, FaBiking, FaBook, FaGuitar, FaChess, FaCameraRetro } from 'react-icons/fa';
+
+// Import your Lottie animation file
+import hobbiesAnimation from './activity.json';
+
+const ExtraActivitiesPage = () => {
+  const activities = [
+    { name: 'Gardening', icon: FaLeaf, description: 'Cultivating a variety of plants and designing landscapes' },
+    { name: 'Fishing', icon: FaFish, description: 'Weekend fishing trips to local lakes and rivers' },
+    { name: 'Travelling', icon: FaPlane, description: 'Exploring new cultures and destinations around the world' },
+    { name: 'Cycling', icon: FaBiking, description: 'Regular cycling tours and participation in local races' },
+    { name: 'Reading', icon: FaBook, description: 'Avid reader of science fiction and historical novels' },
+    { name: 'Playing Guitar', icon: FaGuitar, description: 'Self-taught guitarist, enjoys playing acoustic melodies' },
+    { name: 'Chess', icon: FaChess, description: 'Participates in local chess tournaments and online matches' },
+    { name: 'Photography', icon: FaCameraRetro, description: 'Capturing landscapes and street life during travels' },
+  ];
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: hobbiesAnimation,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-black to-sky-800 text-white p-8">
+      <div className="max-w-6xl mx-auto">
+        <motion.h1 
+          className="text-5xl font-bold mb-8 text-center"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          Extracurricular Activities & Hobbies
+        </motion.h1>
+        
+        <div className="flex flex-col md:flex-row items-center justify-between mb-12">
+          <motion.p 
+            className="text-lg mb-8 md:mb-0 md:mr-8 max-w-lg"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
+            Engaging in diverse activities outside of work helps me maintain a balanced life, 
+            fosters creativity, and contributes to my overall well-being and professional growth.
+            These hobbies shape who I am and bring unique perspectives to my work.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          >
+            <Lottie 
+              options={defaultOptions}
+              height={300}
+              width={300}
+            />
+          </motion.div>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {activities.map((activity, index) => (
+            <motion.div
+              key={activity.name}
+              className="bg-white bg-opacity-10 rounded-lg p-6 flex flex-col items-center backdrop-filter backdrop-blur-lg"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgb(255,255,255)" }}
+            >
+              <motion.div
+                className="text-4xl mb-4"
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.5 }}
+              >
+                <activity.icon />
+              </motion.div>
+              <h2 className="text-xl font-semibold mb-2">{activity.name}</h2>
+              <p className="text-sm text-center text-gray-300">{activity.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ExtraActivitiesPage;
