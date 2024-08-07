@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { useSpring, animated, config } from 'react-spring';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaGlobe, FaPython, FaJsSquare, FaPhp, FaJava, FaAndroid, FaLaravel, FaReact, FaVuejs } from 'react-icons/fa';
-import { SiTypescript, SiCplusplus, SiSolidity, SiFlutter } from 'react-icons/si';
+import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaGlobe, FaPython, FaJsSquare, FaPhp, FaJava, FaAndroid, FaLaravel, FaReact, FaVuejs, FaNodeJs, FaDatabase } from 'react-icons/fa';
+import { SiTypescript, SiCplusplus, SiSolidity, SiFlutter, SiMongodb, SiPostgresql, SiMysql } from 'react-icons/si';
 import { MdWork, MdSchool } from 'react-icons/md';
+import Lottie from 'react-lottie';
+import contactAnimation from './contact.json'; // You'll need to add this animation file
 
 const ProfilePage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,94 +26,19 @@ const ProfilePage = () => {
       }
     },
     workExperience: [
-      {
-        title: "Product Manager",
-        company: "Z8-Tech",
-        location: "Bangladesh",
-        startDate: "2023",
-        endDate: "Present",
-        current: true,
-        responsibilities: [
-          "Lead product development and strategy",
-          "Coordinate cross-functional teams to deliver high-quality products",
-          "Analyze market trends and user feedback to drive product improvements"
-        ]
-      },
-      {
-        title: "Full Stack Developer",
-        company: "Authentic Four Technology",
-        location: "Bangladesh",
-        startDate: "2022",
-        endDate: "2023",
-        current: false,
-        responsibilities: [
-          "Developed and maintained full-stack web applications",
-          "Collaborated with design and backend teams to implement new features",
-          "Optimized application performance and user experience"
-        ]
-      },
-      {
-        title: "Flutter cum Android Developer",
-        company: "Authentic Four Technology",
-        location: "Bangladesh",
-        startDate: "2021",
-        endDate: "2022",
-        current: false,
-        responsibilities: [
-          "Built cross-platform mobile applications using Flutter",
-          "Maintained and updated existing Android applications",
-          "Implemented responsive and user-friendly mobile interfaces"
-        ]
-      },
-      {
-        title: "Junior Android Developer",
-        company: "Authentic Four Technology",
-        location: "Bangladesh",
-        startDate: "2019",
-        endDate: "2021",
-        current: false,
-        responsibilities: [
-          "Developed Android applications from concept to deployment",
-          "Collaborated with the design team to implement UI/UX designs",
-          "Participated in code reviews and implemented best practices"
-        ]
-      }
+      // ... (same as before)
     ],
     education: [
-      {
-        degree: "Bachelor in Computer Science and Engineering",
-        institution: "University Name",
-        period: "2021 - Present (Expected completion in 4 months)",
-        gpa: "CGPA: 3.72 (for current 145 ECTs)",
-        achievements: [
-          "Completed 145 ECTs",
-          "Participated in multiple hackathons and coding competitions"
-        ]
-      },
-      {
-        degree: "Higher Secondary Certificate (12th Standard)",
-        institution: "Institution Name",
-        period: "2021",
-        result: "GPA: 3.98 out of 5",
-        achievements: [
-          "Science Club Member",
-          "Participated in national level science fair"
-        ]
-      },
-      {
-        degree: "Secondary School Certificate (10th Standard)",
-        institution: "Islamia University College",
-        period: "2017",
-        result: "GPA: 4.86 out of 5",
-        achievements: [
-          "Achieved excellent academic performance",
-          "Active member of the school's programming club"
-        ]
-      }
+      // ... (same as before)
     ],
     skills: {
       languages: ["Python", "JavaScript", "TypeScript", "PHP", "Java", "C/C++", "Solidity"],
-      frameworks: ["Native Android", "Flutter", "Laravel", "ReactJs", "VueJs"]
+      frameworks: {
+        frontend: ["ReactJs", "VueJs"],
+        backend: ["Laravel", "NodeJs"],
+        mobile: ["Native Android", "Flutter"],
+        database: ["MongoDB", "PostgreSQL", "MySQL"]
+      }
     }
   };
 
@@ -158,12 +85,25 @@ const ProfilePage = () => {
     Flutter: <SiFlutter />,
     Laravel: <FaLaravel />,
     ReactJs: <FaReact />,
-    VueJs: <FaVuejs />
+    VueJs: <FaVuejs />,
+    NodeJs: <FaNodeJs />,
+    MongoDB: <SiMongodb />,
+    PostgreSQL: <SiPostgresql />,
+    MySQL: <SiMysql />
+  };
+
+  const lottieOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: contactAnimation,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
   };
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 to-black">
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-blue-900 to-black">
         <animated.div style={fadeIn} className="text-3xl font-bold text-indigo-400">
           Loading...
         </animated.div>
@@ -172,29 +112,27 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-gray-100">
-      <header className="bg-gradient-to-r from-gray-800 to-gray-700 shadow-2xl py-16">
-        <animated.div style={slideUp} className="container mx-auto px-4 text-center">
-          <h1 className="text-6xl font-bold text-white mb-4">{profileData.personalInfo.name}</h1>
-          <p className="text-3xl text-indigo-200">{profileData.personalInfo.title}</p>
-        </animated.div>
-      </header>
-
+    <div className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-800 text-gray-100">
       <main className="container mx-auto px-4 py-12">
-        <animated.section style={fadeIn} className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl shadow-2xl p-8 mb-12 hover:shadow-indigo-500/50 transition-shadow duration-300">
+        <animated.section style={fadeIn} className="bg-gradient-to-br from-blue-800 to-blue-700 rounded-xl shadow-2xl p-8 mb-12 hover:shadow-indigo-500/50 transition-shadow duration-300">
           <h2 className="text-3xl font-bold mb-6 text-indigo-300 border-b border-indigo-500 pb-2">About Me</h2>
           <p className="text-indigo-100 leading-relaxed text-lg">{profileData.personalInfo.summary}</p>
         </animated.section>
 
         <animated.section style={fadeIn} className="mb-12">
           <h2 className="text-3xl font-bold mb-6 text-indigo-300 border-b border-indigo-500 pb-2">Contact Information</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 text-indigo-100">
-            {contactItems.map((item, index) => (
-              <div key={index} className="flex items-center bg-gray-700 rounded-lg p-4 shadow-md hover:bg-gray-600 transition-colors">
-                {item.icon}
-                <span className="text-lg">{item.text}</span>
-              </div>
-            ))}
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-indigo-100 mb-8 md:mb-0">
+              {contactItems.map((item, index) => (
+                <div key={index} className="flex items-center bg-blue-700 rounded-lg p-4 shadow-md hover:bg-blue-600 transition-colors">
+                  {item.icon}
+                  <span className="text-lg">{item.text}</span>
+                </div>
+              ))}
+            </div>
+            <div className="w-full md:w-1/2 h-64">
+              <Lottie options={lottieOptions} height="100%" width="100%" />
+            </div>
           </div>
         </animated.section>
 
@@ -205,10 +143,10 @@ const ProfilePage = () => {
               <VerticalTimelineElement
                 key={index}
                 className="vertical-timeline-element--work"
-                contentStyle={{ background: 'rgb(79, 70, 229)', color: '#fff' }}
-                contentArrowStyle={{ borderRight: '7px solid  rgb(79, 70, 229)' }}
+                contentStyle={{ background: 'rgb(30, 58, 138)', color: '#fff' }}
+                contentArrowStyle={{ borderRight: '7px solid  rgb(30, 58, 138)' }}
                 date={`${experience.startDate} - ${experience.current ? 'Present' : experience.endDate}`}
-                iconStyle={{ background: 'rgb(79, 70, 229)', color: '#fff' }}
+                iconStyle={{ background: 'rgb(30, 58, 138)', color: '#fff' }}
                 icon={<MdWork />}
               >
                 <h3 className="vertical-timeline-element-title text-xl font-bold">{experience.title}</h3>
@@ -230,10 +168,10 @@ const ProfilePage = () => {
               <VerticalTimelineElement
                 key={index}
                 className="vertical-timeline-element--education"
-                contentStyle={{ background: 'rgb(76, 29, 149)', color: '#fff' }}
-                contentArrowStyle={{ borderRight: '7px solid  rgb(76, 29, 149)' }}
+                contentStyle={{ background: 'rgb(30, 58, 138)', color: '#fff' }}
+                contentArrowStyle={{ borderRight: '7px solid  rgb(30, 58, 138)' }}
                 date={edu.period}
-                iconStyle={{ background: 'rgb(76, 29, 149)', color: '#fff' }}
+                iconStyle={{ background: 'rgb(30, 58, 138)', color: '#fff' }}
                 icon={<MdSchool />}
               >
                 <h3 className="vertical-timeline-element-title text-xl font-bold">{edu.degree}</h3>
@@ -254,25 +192,30 @@ const ProfilePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-indigo-200">Languages</h3>
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-4">
                 {profileData.skills.languages.map((lang, index) => (
-                  <div key={index} className="flex flex-col items-center bg-gray-700 rounded-lg p-4 shadow-md hover:bg-gray-600 transition-colors">
-                    <span className="text-3xl mb-2">{skillIcons[lang]}</span>
+                  <div key={index} className="flex flex-col items-center bg-blue-700 rounded-lg p-4 shadow-md hover:bg-blue-600 transition-colors transform hover:scale-105">
+                    <span className="text-3xl mb-2 text-indigo-300">{skillIcons[lang]}</span>
                     <span className="text-center">{lang}</span>
                   </div>
                 ))}
               </div>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold mb-4 text-indigo-200">Frameworks</h3>
-              <div className="grid grid-cols-3 gap-4">
-                {profileData.skills.frameworks.map((framework, index) => (
-                  <div key={index} className="flex flex-col items-center bg-gray-700 rounded-lg p-4 shadow-md hover:bg-gray-600 transition-colors">
-                    <span className="text-3xl mb-2">{skillIcons[framework]}</span>
-                    <span className="text-center">{framework}</span>
+              <h3 className="text-2xl font-semibold mb-4 text-indigo-200">Frameworks & Technologies</h3>
+              {Object.entries(profileData.skills.frameworks).map(([category, items]) => (
+                <div key={category} className="mb-6">
+                  <h4 className="text-xl font-semibold mb-2 text-indigo-300 capitalize">{category}</h4>
+                  <div className="grid grid-cols-3 sm:grid-cols-4 gap-4">
+                    {items.map((item, index) => (
+                      <div key={index} className="flex flex-col items-center bg-blue-700 rounded-lg p-4 shadow-md hover:bg-blue-600 transition-colors transform hover:scale-105">
+                        <span className="text-3xl mb-2 text-indigo-300">{skillIcons[item]}</span>
+                        <span className="text-center">{item}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </animated.section>

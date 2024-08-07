@@ -3,8 +3,10 @@ import Banner from "./component/Banner";
 import Contact from "./component/Contact";
 import ContactForm from "./component/ContactForm";
 import Count from "./component/Count";
-import ProfilePage from "./component/ProfilePage";
+import ExperienceEducationPage from "./component/Experience";
+
 import Projects from "./component/Projects";
+import SkillsPage from "./component/Skill";
 
 
 const App = () => {
@@ -12,7 +14,8 @@ const App = () => {
     <div>
       <Banner></Banner>
       <About></About>
-      <ProfilePage></ProfilePage>
+      <ExperienceEducationPage></ExperienceEducationPage>
+      <SkillsPage></SkillsPage>
       <Projects></Projects>
        <Count></Count>
       <Contact></Contact>

@@ -1,18 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedinIn, FaEnvelope, FaCode, FaDatabase, FaMobileAlt, FaProjectDiagram, FaUserTie, FaGraduationCap } from 'react-icons/fa';
+import Lottie from 'react-lottie';
+import { FaGithub, FaLinkedinIn, FaEnvelope, FaCode, FaDatabase, FaMobileAlt, FaProjectDiagram, FaUserTie } from 'react-icons/fa';
+import animationData from '../component/about.json'; // Ensure you have the correct path to your Lottie JSON file
 
 const InfoItem = ({ icon: Icon, title, description }) => (
   <motion.div 
-    className="flex items-start mb-4"
+    className="flex items-start mb-8"
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
+    transition={{ duration: 0.6 }}
   >
-    <Icon className="text-purple-400 text-2xl mr-4 mt-1" />
+    <Icon className="text-blue-400 text-3xl mr-4 mt-1 flex-shrink-0" />
     <div>
-      <h3 className="text-lg font-semibold text-purple-300">{title}</h3>
-      <p className="text-gray-300">{description}</p>
+      <h3 className="text-xl font-semibold text-blue-300 mb-2">{title}</h3>
+      <p className="text-gray-300 leading-relaxed">{description}</p>
     </div>
   </motion.div>
 );
@@ -33,92 +35,111 @@ const About = () => {
     visible: { y: 0, opacity: 1 }
   };
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true, 
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+
   return (
-    <section className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white py-12 px-2 sm:px-6 lg:px-6 flex items-center justify-center">
+    <section className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-black text-white py-16 px-4 sm:px-6 lg:px-8">
       <motion.div 
         className="max-w-7xl mx-auto"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <motion.div
-          className="bg-gray-800 rounded-lg p-8 shadow-2xl"
-          variants={itemVariants}
-        >
-          <h1 className="text-4xl font-bold mb-6 text-center text-purple-300">
-            Sayem Hossen
-          </h1>
-          <p className="text-gray-300 mb-8 text-lg leading-relaxed">
-            As a Full Stack Developer turned Product Manager, I bring a unique blend of technical expertise and strategic vision to the tech industry. My journey in software development, coupled with my current role in product management, allows me to bridge the gap between innovative ideas and their practical implementation.
-          </p>
-          
-          <motion.div className="space-y-6" variants={containerVariants}>
-            <InfoItem 
-              icon={FaCode}
-              title="Full Stack Development"
-              description="Proficient in Python, JavaScript, TypeScript, PHP, Java, and C/C++. Experienced with React, Vue.js, Flutter, and Laravel frameworks."
-            />
-            <InfoItem 
-              icon={FaDatabase}
-              title="Backend & Databases"
-              description="Skilled in Node.js, Express.js, and working with both SQL and NoSQL databases like MySQL and MongoDB."
-            />
-            <InfoItem 
-              icon={FaMobileAlt}
-              title="Mobile Development"
-              description="Experienced in Native Android and Flutter for cross-platform mobile app development."
-            />
-            <InfoItem 
-              icon={FaProjectDiagram}
-              title="Product Management"
-              description="Currently leading product development initiatives at Z8-Tech, coordinating cross-functional teams, and ensuring successful product launches."
-            />
-            <InfoItem 
-              icon={FaUserTie}
-              title="Leadership & Communication"
-              description="Strong leadership skills with the ability to communicate complex technical concepts to diverse stakeholders."
-            />
-            
-          </motion.div>
-
-          <motion.div 
-            className="flex flex-col items-center space-y-4 mt-8 sm:flex-row sm:space-y-0 sm:space-x-6"
+        <div className="flex flex-col lg:flex-row items-center justify-between">
+          <motion.div
+            className="lg:w-1/2 mb-12 lg:mb-0"
             variants={itemVariants}
           >
-            <motion.a
-              href="https://github.com/sayem-hossen"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              className="text-purple-300 hover:text-purple-400"
+            <h1 className="text-5xl font-bold mb-6 text-blue-300 leading-tight">
+              About Me
+            </h1>
+            <p className="text-gray-300 mb-8 text-xl leading-relaxed">
+              Full Stack Developer turned Product Manager, bridging innovation and implementation in the tech industry.
+            </p>
+            
+            <motion.div className="space-y-6" variants={containerVariants}>
+              <InfoItem 
+                icon={FaCode}
+                title="Full Stack Development"
+                description="Proficient in Python, JavaScript, TypeScript, PHP, Java, and C/C++. Experienced with React, Vue.js, Flutter, and Laravel frameworks."
+              />
+              <InfoItem 
+                icon={FaDatabase}
+                title="Backend & Databases"
+                description="Skilled in Node.js, Express.js, and working with both SQL and NoSQL databases like MySQL and MongoDB."
+              />
+              <InfoItem 
+                icon={FaMobileAlt}
+                title="Mobile Development"
+                description="Experienced in Native Android and Flutter for cross-platform mobile app development."
+              />
+              <InfoItem 
+                icon={FaProjectDiagram}
+                title="Product Management"
+                description="Currently leading product development initiatives at Z8-Tech, coordinating cross-functional teams, and ensuring successful product launches."
+              />
+              <InfoItem 
+                icon={FaUserTie}
+                title="Leadership & Communication"
+                description="Strong leadership skills with the ability to communicate complex technical concepts to diverse stakeholders."
+              />
+            </motion.div>
+
+            <motion.div 
+              className="flex items-center space-x-6 mt-12"
+              variants={itemVariants}
             >
-              <FaGithub size={24} />
-            </motion.a>
-            <motion.a
-              href="https://www.linkedin.com/in/sayem-hossen/"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              className="text-purple-300 hover:text-purple-400"
-            >
-              <FaLinkedinIn size={24} />
-            </motion.a>
-            <motion.a
-              href="mailto:sayemhossen874@gmail.com"
-              whileHover={{ scale: 1.1 }}
-              className="text-purple-300 hover:text-purple-400"
-            >
-              <FaEnvelope size={24} />
-            </motion.a>
-            <motion.a
-              href="tel:+8801886441152"
-              whileHover={{ scale: 1.1 }}
-              className="text-purple-300 hover:text-purple-400"
-            >
-              <FaMobileAlt size={24} />
-            </motion.a>
+              <motion.a
+                href="https://github.com/sayem-hossen"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                className="text-blue-300 hover:text-blue-400 transition-colors duration-300"
+              >
+                <FaGithub size={28} />
+              </motion.a>
+              <motion.a
+                href="https://www.linkedin.com/in/sayem-hossen/"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                className="text-blue-300 hover:text-blue-400 transition-colors duration-300"
+              >
+                <FaLinkedinIn size={28} />
+              </motion.a>
+              <motion.a
+                href="mailto:sayemhossen874@gmail.com"
+                whileHover={{ scale: 1.1 }}
+                className="text-blue-300 hover:text-blue-400 transition-colors duration-300"
+              >
+                <FaEnvelope size={28} />
+              </motion.a>
+              <motion.a
+                href="tel:+8801886441152"
+                whileHover={{ scale: 1.1 }}
+                className="text-blue-300 hover:text-blue-400 transition-colors duration-300"
+              >
+                <FaMobileAlt size={28} />
+              </motion.a>
+            </motion.div>
           </motion.div>
-        </motion.div>
+
+          <motion.div
+            className="lg:w-1/2 flex justify-center items-center"
+            variants={itemVariants}
+          >
+            <div className="w-full max-w-md">
+              <Lottie options={defaultOptions} height="100%" width="100%" />
+            </div>
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   );
