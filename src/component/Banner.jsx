@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaFacebook, FaCodepen, FaTwitter } from 'react-icons/fa';
 import { TypeAnimation } from 'react-type-animation';
@@ -35,28 +35,28 @@ const Banner = () => {
     <div className="relative min-h-screen bg-gradient-to-br from-black via-blue-900 to-blue-500 text-white overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(30)].map((_, i) => (
+        {[...Array(50)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute bg-sky-600 rounded-full opacity-10"
             style={{
-              width: Math.random() * 300 + 50,
-              height: Math.random() * 300 + 50,
+              width: `${Math.random() * 5 + 1}vw`,
+              height: `${Math.random() * 5 + 1}vw`,
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
             }}
             animate={{
-              scale: [1, 2, 2, 1, 1],
-              rotate: [0, 0, 270, 270, 0],
-              opacity: [0.1, 0.2, 0.4, 0.2, 0.1],
-              borderRadius: ["20%", "20%", "50%", "80%", "20%"],
+              scale: [1, 1.5, 1.5, 1, 1],
+              rotate: [0, 0, 180, 180, 0],
+              opacity: [0.1, 0.2, 0.3, 0.2, 0.1],
+              borderRadius: ["50%", "50%", "20%", "50%", "50%"],
             }}
             transition={{
-              duration: 12,
+              duration: 8,
               ease: "easeInOut",
               times: [0, 0.2, 0.5, 0.8, 1],
               repeat: Infinity,
-              repeatDelay: 1
+              repeatDelay: Math.random() * 2
             }}
           />
         ))}
@@ -67,19 +67,18 @@ const Banner = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center w-full max-w-7xl mx-auto">
           {/* Left side: Information */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -50 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-6"
+            className="space-y-8"
           >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-300">
-              Hello,
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-300">Hello,</span>
             </h1>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-              This is <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">{coder.name}</span>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
+              I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">{coder.name}</span>
             </h2>
-            <h3 className="text-xl sm:text-2xl lg:text-3xl">
-              I'm a{' '}
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
               <TypeAnimation
                 sequence={[
                   coder.title,
@@ -96,27 +95,28 @@ const Banner = () => {
                 className="text-teal-400"
               />
             </h3>
-            <div className="flex space-x-5">
+            <div className="flex space-x-6">
               {socialIcons.map(({ Icon, href }, index) => (
                 <motion.a
                   key={index}
                   href={href}
-                  whileHover={{ scale: 1.1, color: "#F3A5B1" }}
-                  className="text-2xl hover:text-pink-400 transition-colors"
+                  whileHover={{ scale: 1.2, color: "#F3A5B1" }}
+                  whileTap={{ scale: 0.9 }}
+                  className="text-3xl hover:text-pink-400 transition-colors"
                 >
                   <Icon />
                 </motion.a>
               ))}
             </div>
-            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
               {['CONTACT ME', 'GET RESUME'].map((text, index) => (
                 <motion.button
                   key={index}
-                  whileHover={{ scale: 1.05, boxShadow: "0px 0px 15px rgba(236, 72, 153, 0.5)" }}
+                  whileHover={{ scale: 1.05, boxShadow: "0px 0px 20px rgba(236, 72, 153, 0.7)" }}
                   whileTap={{ scale: 0.95 }}
                   className={`${
                     index === 0 ? 'bg-gradient-to-r from-blue-600 to-blue-400' : 'bg-gradient-to-r from-pink-500 to-purple-500'
-                  } text-white px-6 py-3 rounded-full text-base font-semibold transition-all duration-300 shadow-lg`}
+                  } text-white px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 shadow-lg hover:shadow-xl`}
                 >
                   {text}
                 </motion.button>
@@ -126,25 +126,25 @@ const Banner = () => {
 
           {/* Right side: Skills */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 50 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 50 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="bg-gray-800 bg-opacity-70 rounded-2xl p-6 backdrop-filter backdrop-blur-lg shadow-2xl border border-gray-700"
+            className="bg-gray-800 bg-opacity-70 rounded-3xl p-8 backdrop-filter backdrop-blur-lg shadow-2xl border border-gray-700 hover:shadow-blue-500/30 transition-shadow duration-300"
           >
-            <div className="flex items-center mb-4">
-              <div className="flex space-x-2">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <div className="flex items-center mb-6">
+              <div className="flex space-x-3">
+                <div className="w-4 h-4 rounded-full bg-red-500"></div>
+                <div className="w-4 h-4 rounded-full bg-yellow-500"></div>
+                <div className="w-4 h-4 rounded-full bg-green-500"></div>
               </div>
             </div>
-            <div className="text-sm sm:text-base text-left text-teal-300">
-              <p><strong>Languages:</strong> {coder.languages.join(', ')}</p>
-              <p><strong>Frameworks:</strong> {coder.frameworks.join(', ')}</p>
-              <p><strong>Hard Worker:</strong> {coder.hardWorker ? 'Yes' : 'No'}</p>
-              <p><strong>Quick Learner:</strong> {coder.quickLearner ? 'Yes' : 'No'}</p>
-              <p><strong>Problem Solver:</strong> {coder.problemSolver ? 'Yes' : 'No'}</p>
-              <p><strong>Hireable:</strong> {coder.hireable() ? 'Yes' : 'No'}</p>
+            <div className="text-base sm:text-lg text-left text-teal-300 space-y-4">
+              <p><strong className="text-pink-400">Languages:</strong> {coder.languages.join(', ')}</p>
+              <p><strong className="text-pink-400">Frameworks:</strong> {coder.frameworks.join(', ')}</p>
+              <p><strong className="text-pink-400">Hard Worker:</strong> {coder.hardWorker ? '✅' : '❌'}</p>
+              <p><strong className="text-pink-400">Quick Learner:</strong> {coder.quickLearner ? '✅' : '❌'}</p>
+              <p><strong className="text-pink-400">Problem Solver:</strong> {coder.problemSolver ? '✅' : '❌'}</p>
+              <p><strong className="text-pink-400">Hireable:</strong> {coder.hireable() ? '✅' : '❌'}</p>
             </div>
           </motion.div>
         </div>
