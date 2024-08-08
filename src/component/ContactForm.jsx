@@ -36,7 +36,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-purple-900 to-black p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-sky-800 to-black p-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -44,7 +44,7 @@ const ContactForm = () => {
         className=" mt-12 w-full max-w-4xl bg-gray-800 rounded-2xl shadow-2xl overflow-hidden"
       >
         <div className="flex flex-col md:flex-row">
-          <div className="md:w-2/5 p-6 bg-gradient-to-br from-indigo-900 to-purple-800">
+          <div className="md:w-2/5 p-6 bg-gradient-to-br from-black to-sky-800">
             <motion.h2 
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
